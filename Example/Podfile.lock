@@ -1,0 +1,16 @@
+PODS:
+  - AppStarRate (0.1.0)
+
+DEPENDENCIES:
+  - AppStarRate (from `../`)
+
+EXTERNAL SOURCES:
+  AppStarRate:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AppStarRate: cfd2ca4e0122673c73ad7b36b6fb9d70725cab35
+
+PODFILE CHECKSUM: 9d603604a0ac056db5babbe53f6a10d3434dd827
+
+COCOAPODS: 1.12.1

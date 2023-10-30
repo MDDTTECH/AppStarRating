@@ -42,11 +42,11 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		8AD1F25C728C0924A4910115 /* Pods_AppStarRate_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppStarRate_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A098820A9D4F3B6CBCA9B3DC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		A1FCA52A236796EDBDED86CC /* AppStarRate.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = AppStarRate.podspec; path = ../AppStarRate.podspec; sourceTree = "<group>"; };
+		A098820A9D4F3B6CBCA9B3DC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		A1FCA52A236796EDBDED86CC /* AppStarRate.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = AppStarRate.podspec; path = ../AppStarRate.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A801BB4F7AC6C4A412761A07 /* Pods-AppStarRate_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStarRate_Tests.release.xcconfig"; path = "Target Support Files/Pods-AppStarRate_Tests/Pods-AppStarRate_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		CF2102170FACA631406DF841 /* Pods_AppStarRate_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppStarRate_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF60E4B8AE84D394E4E627FA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		CF60E4B8AE84D394E4E627FA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,7 +147,6 @@
 				39C651A4789332C4F043E624 /* Pods-AppStarRate_Tests.debug.xcconfig */,
 				A801BB4F7AC6C4A412761A07 /* Pods-AppStarRate_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -227,6 +226,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);

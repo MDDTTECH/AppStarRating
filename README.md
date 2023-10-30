@@ -22,7 +22,7 @@ pod 'AppStarRate'
 
 ## Author
 
-Aleksunder Volkov, t.me/aleksundervolkov
+Aleksunder Volkov, t.me/aleksundervolkov, TOO MDDT, hello@mddt.tech
 
 ## License
 
