@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '10.0'
+
+target 'AppStarRate_Example' do
+  pod 'AppStarRate', :path => '../'
+
+  target 'AppStarRate_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
