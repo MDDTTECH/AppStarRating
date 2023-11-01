@@ -171,7 +171,7 @@ private extension RateView.SuggestionsView {
     
     @objc
     func closeButtonAction(_ sender: UIButton) {
-        tapCloseHandler()
+        tapCloseHandler(.suggestions)
     }
     
     @objc

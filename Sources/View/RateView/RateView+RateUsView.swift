@@ -32,11 +32,11 @@ public extension RateView {
         private lazy var closeButton: UIButton = {
             let button = UIButton()
             let img: UIImage = styles.closeButtonImage ?? UIImage(systemName: "xmark") ?? UIImage()
-                                                                  
+            
             button.setImage(img, for: .normal)
             button.addTarget(self, action: #selector(closeButtonAction), for: .touchUpInside)
             
-                                                                    return button
+            return button
         }()
         
         private lazy var starRatingView: StarRating = {
@@ -116,18 +116,15 @@ private extension RateView.RateUsView {
         isUserInteractionEnabled = true
         backgroundColor = .white
         layer.cornerRadius = styles.cornerRadius
-//        layer.masksToBounds = true
         
         rateUsLabel.font = styles.fonts.title
         sendButton.titleLabel?.font = styles.fonts.sendButtonTitle
         sendButton.setTitleColor(styles.colors.titleColor, for: .normal)
-        
-        
     }
     
     @objc
     func closeButtonAction(_ sender: UIButton) {
-        tapCloseHandler()
+        tapCloseHandler(.rate)
     }
     
     @objc

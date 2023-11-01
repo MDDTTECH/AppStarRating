@@ -54,8 +54,8 @@ class ViewController: UIViewController {
             appUrl: "https://apps.apple.com/us/app/irnby/id1484553613"
         ){ starRate in
             print("selected \(starRate.selectedStar)")
-        } tapCloseHandler: {
-            print("tapedClose")
+        } tapCloseHandler: { executor in
+            print("tapedClose in \(executor)")
             self.rateView.removeFromSuperview()
         } tapSendRateHandler: { starRate in
             print("send starRate \(starRate.selectedStar) of: \(starRate.ofTotalStars)")

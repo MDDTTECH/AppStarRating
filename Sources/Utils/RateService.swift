@@ -14,11 +14,6 @@ protocol RateServicable {
         with rate: RateView.StarRate,
         appUrl: AppUrl
     )
-    
-    func sendSuggestions(
-        with feedback: String,
-        rating: Int
-    )
 }
 
 
@@ -34,16 +29,6 @@ extension RateService: RateServicable {
         if rate.selectedStar == rate.ofTotalStars{
             AppStoreManager.requestReviewIfAppropriate(with: appUrl)
         }// TODO: Save other rate in smwhere?
-    }
-    
-    
-    func sendSuggestions(
-        with feedback: String,
-        rating: Int
-    ) {
-        
-        
-        
     }
 }
     

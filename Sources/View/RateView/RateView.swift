@@ -12,9 +12,14 @@ import Blurberry
 
 public final class RateView: UIVisualEffectView {
     
+    public enum CloseExecutor {
+        case rate
+        case suggestions
+    }
+    
     public typealias SelectedStarHandler = ((StarRate) -> Void)
     public typealias StarRate = (selectedStar: Int, ofTotalStars: Int)
-    public typealias TapCloseHandler = () -> Void
+    public typealias TapCloseHandler = (CloseExecutor) -> Void
     public typealias TapSendRateHandler = (StarRate) -> Void
     public typealias Suggestions = (selectedStar: Int, ofTotalStars: Int, suggestions: String)
     public typealias SendSuggestionsHandler = ((Suggestions) -> Void)
@@ -124,7 +129,7 @@ private extension RateView {
         self.starRate = starRate
         if starRate.selectedStar == starRate.ofTotalStars{
             rateService?.rateApp(with: starRate, appUrl: appUrl)
-            tapCloseHandler()
+            tapCloseHandler(.rate)
         } else if starRate.selectedStar > 0 {
             rateStarView.removeFromSuperview()
             setupSuggestionsView()
