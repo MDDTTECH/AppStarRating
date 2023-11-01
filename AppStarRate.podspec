@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'AppStarRate'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'Custom App Rating'
   s.homepage         = 'https://github.com/MDDTTECH/AppStarRate'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
