@@ -129,7 +129,8 @@ private extension RateView.RateUsView {
     
     @objc
     func sendAction(_ sender: UIButton) {
-        print("send rate: \(starRate.selectedStar), out of \(starRate.ofTotalStars)")
+        print(" [AppStarRate.RateUsView] sendAction \(sender) send rate: \(starRate.selectedStar), out of \(starRate.ofTotalStars)")
+        tapSendRateHandler((starRate.selectedStar, starRate.ofTotalStars))
         tapSendRateHandler((starRate.selectedStar, starRate.ofTotalStars))
     }
     

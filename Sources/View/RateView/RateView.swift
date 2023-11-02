@@ -41,10 +41,12 @@ public final class RateView: UIVisualEffectView {
         let rate = RateUsView(
             styles: styles,
             tapCloseHandler: { [weak self] executor in
+                print(" [AppStarRate.RateView] tapCloseHandler \(executor) ")
                 self?.subviews.forEach { $0.removeFromSuperview() }
                 self?.tapCloseHandler(executor)
             },
             tapSendRateHandler: { [weak self] starRate in
+                print(" [AppStarRate.RateView] tapSendRateHandler send rate: \(starRate.selectedStar), out of \(starRate.ofTotalStars)")
                 self?.onSendRateTapped(starRate: starRate)
             }
         )
@@ -130,6 +132,7 @@ private extension RateView {
     
     func onSendRateTapped(starRate: StarRate) {
         self.starRate = starRate
+        tapSendRateHandler(starRate)
         if starRate.selectedStar == starRate.ofTotalStars{
             rateService?.rateApp(with: starRate, appUrl: appUrl)
             tapCloseHandler(.rate)

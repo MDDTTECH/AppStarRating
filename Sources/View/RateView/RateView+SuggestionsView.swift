@@ -176,7 +176,7 @@ private extension RateView.SuggestionsView {
     
     @objc
     func sendAction(_ sender: UIButton) {
-        print("send rate: \(starRate.selectedStar), out of \(starRate.ofTotalStars)")
+        print(" [AppStarRate.SuggestionsView] sendAction \(sender) send rate: \(starRate.selectedStar), out of \(starRate.ofTotalStars)")
         
         sendSuggestionsHandler((
             selectedStar: starRate.selectedStar,
