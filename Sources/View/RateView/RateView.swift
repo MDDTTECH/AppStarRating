@@ -40,7 +40,10 @@ public final class RateView: UIVisualEffectView {
         
         let rate = RateUsView(
             styles: styles,
-            tapCloseHandler: tapCloseHandler,
+            tapCloseHandler: { [weak self] executor in
+                self?.subviews.forEach { $0.removeFromSuperview() }
+                self?.tapCloseHandler(executor)
+            },
             tapSendRateHandler: { [weak self] starRate in
                 self?.onSendRateTapped(starRate: starRate)
             }
