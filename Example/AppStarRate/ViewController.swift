@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     
     private lazy var rateView: RateView = {
         let styles: RateView.Styles = .init(
+            isCloseButtonVisible: true,
             fonts: .init(
                 title: .boldSystemFont(ofSize: 18),
                 subtitle: .systemFont(ofSize: 14),
