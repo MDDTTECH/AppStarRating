@@ -6,6 +6,7 @@
 //  Copyright © 2023 MDDT. All rights reserved.
 //
 
+import Combine
 import UIKit
 import Blurberry
 
@@ -15,6 +16,7 @@ public final class RateView: UIVisualEffectView {
     public enum CloseExecutor {
         case rate
         case suggestions
+        case blur
     }
     
     public typealias SelectedStarHandler = ((StarRate) -> Void)
@@ -35,6 +37,8 @@ public final class RateView: UIVisualEffectView {
     private let appUrl: AppUrl
     private var starRate: StarRate
     private lazy var rateService: RateServicable? = RateService()
+    private var isKeyboardShown = false
+    private var cancellables = Set<AnyCancellable>()
     
     private lazy var rateStarView: RateUsView = {
         
@@ -75,7 +79,6 @@ public final class RateView: UIVisualEffectView {
         tapCloseHandler: @escaping TapCloseHandler,
         tapSendRateHandler: @escaping TapSendRateHandler,
         sendSuggestionsHandler: @escaping SendSuggestionsHandler
-        
     ) {
         self.styles = styles
         self.starRate = (selectedStar: 0, ofTotalStars: styles.totalStarsRate)
@@ -88,37 +91,54 @@ public final class RateView: UIVisualEffectView {
         
         setupRateStarView()
         setupAppearence()
+        
+        NotificationCenter.default
+            .publisher(for: UIResponder.keyboardWillShowNotification)
+            .sink { [weak self] _ in
+                self?.isKeyboardShown = true
+            }
+            .store(in: &cancellables)
+        
+        NotificationCenter.default
+            .publisher(for: UIResponder.keyboardWillHideNotification)
+            .debounce(for: 0.5, scheduler: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.isKeyboardShown = false
+            }
+            .store(in: &cancellables)
     }
     
     public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    
+    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        contentView.endEditing(true)
+    }
 }
 
 private extension RateView {
     
     func setupRateStarView() {
         self.contentView.addSubview(rateStarView)
+        rateStarView.addGestureRecognizer(UITapGestureRecognizer(target: nil, action: nil))
         
         rateStarView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.trailing.equalToSuperview().inset(22)
             make.height.equalTo(190)
-                
         }
     }
     
     func setupAppearence() {
-        
         self.backgroundColor = styles.blurColor
         self.blur.radius = styles.blurRadius
-        
+        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onBlurViewTapped)))
     }
     
     func setupSuggestionsView() {
         self.contentView.addSubview(suggestionsView)
+        suggestionsView.addGestureRecognizer(UITapGestureRecognizer(target: nil, action: nil))
         
         suggestionsView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
@@ -142,4 +162,10 @@ private extension RateView {
         }
     }
     
+    @objc
+    func onBlurViewTapped() {
+        guard !isKeyboardShown else { return }
+        
+        tapCloseHandler(.blur)
+    }
 }

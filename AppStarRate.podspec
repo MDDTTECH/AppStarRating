@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.social_media_url = "https://t.me/aleksundervolkovnotes"
   s.ios.deployment_target = '10.0'
   s.source_files  = 'Sources/**/*.{swift,h,m}'
-  s.frameworks = 'UIKit', 'StoreKit'
+  s.frameworks = 'UIKit', 'StoreKit', 'Combine'
   s.dependency 'Blurberry', '~> 0.1.0'
   s.dependency 'SnapKit', '~> 5.6.0'
   s.swift_version     = "5.0"

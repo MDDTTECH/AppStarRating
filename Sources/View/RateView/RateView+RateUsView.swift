@@ -120,6 +120,8 @@ private extension RateView.RateUsView {
         rateUsLabel.font = styles.fonts.title
         sendButton.titleLabel?.font = styles.fonts.sendButtonTitle
         sendButton.setTitleColor(styles.colors.titleColor, for: .normal)
+        
+        closeButton.isHidden = !styles.isCloseButtonVisible
     }
     
     @objc

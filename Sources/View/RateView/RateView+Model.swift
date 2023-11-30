@@ -10,7 +10,9 @@ import UIKit
 
 public extension RateView {
     
-     struct Styles {
+    struct Styles {
+        public let isCloseButtonVisible: Bool
+        
         public struct Fonts {
             public let title: UIFont
             public let subtitle: UIFont
@@ -65,7 +67,8 @@ public extension RateView {
         public let filledStarImage: UIImage?
         public let unfilledStarImage: UIImage?
         
-        public init(fonts: Fonts, colors: Colors, blurColor: UIColor, blurRadius: CGFloat, cornerRadius: CGFloat, totalStarsRate: Int, closeButtonImage: UIImage?, filledStarImage: UIImage?, unfilledStarImage: UIImage?) {
+        public init(isCloseButtonVisible: Bool, fonts: Fonts, colors: Colors, blurColor: UIColor, blurRadius: CGFloat, cornerRadius: CGFloat, totalStarsRate: Int, closeButtonImage: UIImage?, filledStarImage: UIImage?, unfilledStarImage: UIImage?) {
+            self.isCloseButtonVisible = isCloseButtonVisible
             self.fonts = fonts
             self.colors = colors
             self.blurColor = blurColor
@@ -80,6 +83,7 @@ public extension RateView {
         
         public static var `default`: Self {
             return .init(
+                isCloseButtonVisible: true,
                 fonts: .init(
                     title: .boldSystemFont(ofSize: 18),
                     subtitle: .systemFont(ofSize: 14),

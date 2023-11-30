@@ -1,5 +1,5 @@
 PODS:
-  - AppStarRate (0.1.0):
+  - AppStarRate (0.1.4):
     - Blurberry (~> 0.1.0)
     - SnapKit (~> 5.6.0)
   - Blurberry (0.1.0)
@@ -18,7 +18,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AppStarRate: 440ed41a96531ecdc6d51178f8a35423eb916924
+  AppStarRate: 3e1625397c4d52731f61b12c2d32434b998e7209
   Blurberry: 361c1a4778ea0c46da25716b03d1344a4cf8fe01
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
 

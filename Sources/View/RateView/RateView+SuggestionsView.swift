@@ -38,7 +38,6 @@ public extension RateView {
                 приложения
                 """
             label.textAlignment = .center
-            
             label.numberOfLines = 3
             return label
         }()
@@ -55,7 +54,7 @@ public extension RateView {
         
         private lazy var suggestionTextView: UITextView = {
             let textView = UITextView()
-            textView.backgroundColor = .lightGray.withAlphaComponent(0.4)
+            textView.backgroundColor = UIColor(red: 0.96, green: 0.96, blue: 0.96, alpha: 1)
             textView.textContainerInset = UIEdgeInsets(top: 18, left: 16, bottom: 18, right: 16)
             textView.textAlignment = .natural
             textView.textContainer.lineFragmentPadding = 0
@@ -126,9 +125,9 @@ private extension RateView.SuggestionsView {
         
         addSubview(subTitleLabel)
         subTitleLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
             make.top.equalTo(titleLabel.snp.bottom).offset(22)
             make.height.equalTo(60)
+            make.leading.trailing.equalToSuperview().inset(24)
         }
         
         addSubview(suggestionTextView)
@@ -136,7 +135,6 @@ private extension RateView.SuggestionsView {
         suggestionTextView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(24)
             make.top.equalTo(subTitleLabel.snp.bottom).offset(24)
-            
         }
         
         addSubview(placeholderLabel)
@@ -167,6 +165,8 @@ private extension RateView.SuggestionsView {
         suggestionTextView.textColor = styles.colors.messageColor
         sendButton.titleLabel?.font = styles.fonts.sendButtonTitle
         sendButton.setTitleColor(styles.colors.titleColor, for: .normal)
+        
+        closeButton.isHidden = !styles.isCloseButtonVisible
     }
     
     @objc
