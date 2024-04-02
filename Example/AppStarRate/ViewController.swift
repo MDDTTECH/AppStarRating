@@ -74,15 +74,24 @@ class ViewController: UIViewController {
         view.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
+        addRateView()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    private func addRateView() {
         self.view.addSubview(rateView)
-        
         rateView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
-        // Do any additional setup after loading the view.
     }
+    
+    @objc func handleTap(_ gesture: UITapGestureRecognizer) {
+        if self.rateView.superview == nil {
+            addRateView()
+        }
+    }
+
 
 
 }

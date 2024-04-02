@@ -46,7 +46,8 @@ public extension RateView {
         }()
         
         private lazy var sendButton: SendButton = {
-            let button = SendButton(cornerRadius: styles.cornerRadius)            // TODO: Localization
+            let button = SendButton(cornerRadius: styles.cornerRadius)           
+            // TODO: Localization
             button.setTitle("Отправить", for: .normal)
             //FIXME: dont worked with style
             button.backgroundColor = .green //styles.colors.sendButtonColor
@@ -68,7 +69,6 @@ public extension RateView {
             self.tapCloseHandler = tapCloseHandler
             self.tapSendRateHandler = tapSendRateHandler
             super.init(frame: .zero)
-            
             setupLayout()
             setupAppearance()
         }
@@ -76,10 +76,7 @@ public extension RateView {
         required init?(coder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
-        
     }
-    
-    
 }
 
 private extension RateView.RateUsView {
@@ -116,11 +113,9 @@ private extension RateView.RateUsView {
         isUserInteractionEnabled = true
         backgroundColor = .white
         layer.cornerRadius = styles.cornerRadius
-        
         rateUsLabel.font = styles.fonts.title
         sendButton.titleLabel?.font = styles.fonts.sendButtonTitle
         sendButton.setTitleColor(styles.colors.titleColor, for: .normal)
-        
         closeButton.isHidden = !styles.isCloseButtonVisible
     }
     
@@ -131,15 +126,18 @@ private extension RateView.RateUsView {
     
     @objc
     func sendAction(_ sender: UIButton) {
+        #if DEBUG
         print(" [AppStarRate.RateUsView] sendAction \(sender) send rate: \(starRate.selectedStar), out of \(starRate.ofTotalStars)")
+        #endif
         tapSendRateHandler((starRate.selectedStar, starRate.ofTotalStars))
         tapSendRateHandler((starRate.selectedStar, starRate.ofTotalStars))
     }
     
     @objc
     func starRatingValueChanged(_ sender: RateView.StarRating) {
-        
+        #if DEBUG
         print("Selected \(sender.selectedStars), out of \(sender.totalStars)")
+        #endif
         starRate = (sender.selectedStars, sender.totalStars)
 
     }

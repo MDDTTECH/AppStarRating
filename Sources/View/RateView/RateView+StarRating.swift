@@ -14,7 +14,6 @@ public extension RateView {
     
     final class StarRating: UIControl {
         
-        
         var styles: Styles = .default
         
         /// Number of total stars

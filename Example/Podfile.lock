@@ -1,5 +1,5 @@
 PODS:
-  - AppStarRate (0.1.4):
+  - AppStarRate (0.1.5):
     - Blurberry (~> 0.1.0)
     - SnapKit (~> 5.6.0)
   - Blurberry (0.1.0)
@@ -18,10 +18,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AppStarRate: 3e1625397c4d52731f61b12c2d32434b998e7209
+  AppStarRate: 158de5f2db0710919f4750c722ff13dfa2e0e405
   Blurberry: 361c1a4778ea0c46da25716b03d1344a4cf8fe01
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
 
 PODFILE CHECKSUM: ceeaeef6e516b0a0f72e849ffc10742dc9a50990
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.14.3

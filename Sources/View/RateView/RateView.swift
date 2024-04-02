@@ -13,10 +13,11 @@ import Blurberry
 
 public final class RateView: UIVisualEffectView {
     
+    /// Detect on which stage rate or suggestion user tap close or that the same  blur
+    ///  If user close on rate stage so user don't whant to rate and if on suggestion so user have rated but don't whant to write suggestion
     public enum CloseExecutor {
         case rate
         case suggestions
-        case blur
     }
     
     public typealias SelectedStarHandler = ((StarRate) -> Void)
@@ -29,6 +30,7 @@ public final class RateView: UIVisualEffectView {
     // MARK: Internal Properties
     
     // MARK: Private Properties
+    private var currentStage: CloseExecutor = .rate
     private let styles: Styles
     private let selectedStarHandler: SelectedStarHandler
     private let tapCloseHandler: TapCloseHandler
@@ -45,12 +47,16 @@ public final class RateView: UIVisualEffectView {
         let rate = RateUsView(
             styles: styles,
             tapCloseHandler: { [weak self] executor in
+                #if DEBUG
                 print(" [AppStarRate.RateView] tapCloseHandler \(executor) ")
+                #endif
                 self?.subviews.forEach { $0.removeFromSuperview() }
                 self?.tapCloseHandler(executor)
             },
             tapSendRateHandler: { [weak self] starRate in
+                #if DEBUG
                 print(" [AppStarRate.RateView] tapSendRateHandler send rate: \(starRate.selectedStar), out of \(starRate.ofTotalStars)")
+                #endif
                 self?.onSendRateTapped(starRate: starRate)
             }
         )
@@ -139,7 +145,7 @@ private extension RateView {
     func setupSuggestionsView() {
         self.contentView.addSubview(suggestionsView)
         suggestionsView.addGestureRecognizer(UITapGestureRecognizer(target: nil, action: nil))
-        
+        currentStage = .suggestions
         suggestionsView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.trailing.equalToSuperview().inset(22)
@@ -166,6 +172,6 @@ private extension RateView {
     func onBlurViewTapped() {
         guard !isKeyboardShown else { return }
         
-        tapCloseHandler(.blur)
+        tapCloseHandler(currentStage)
     }
 }
